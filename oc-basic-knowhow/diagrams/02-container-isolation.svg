@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 660 320" style="background:#fafafa;font-family:ui-monospace,SFMono-Regular,monospace">
+<defs>
+  <filter id="sk" x="-5%" y="-5%" width="110%" height="110%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.030" numOctaves="3" seed="5" result="n"/>
+    <feDisplacementMap in="SourceGraphic" in2="n" scale="1.5" xChannelSelector="R" yChannelSelector="G"/>
+  </filter>
+  <marker id="a" markerWidth="9" markerHeight="7" refX="8" refY="3.5" orient="auto">
+    <polyline points="0,1 8,3.5 0,6" fill="none" stroke="#555" stroke-width="1.3" stroke-linejoin="round"/>
+  </marker>
+  <style>
+    text { font-family: ui-monospace, SFMono-Regular, monospace; fill: #111; font-size: 12px; }
+    .t { font-weight: 600; font-size: 13px; }
+    .d { fill: #888; font-size: 10px; }
+    .tool { fill: #222; font-size: 11px; }
+    .mount { fill: #444; font-size: 11px; }
+    .fl { stroke-dasharray: 6 4; animation: f .8s linear infinite; }
+    @keyframes f { to { stroke-dashoffset: -10; } }
+  </style>
+</defs>
+
+<!-- Container boundary (dashed = isolation boundary) -->
+<rect x="30" y="45" width="295" height="255" rx="10" fill="#f7f7f7" stroke="#444" stroke-width="1.6" stroke-dasharray="10 5" filter="url(#sk)"/>
+
+<!-- Container title -->
+<text x="177" y="75" text-anchor="middle" class="t">Container</text>
+<text x="177" y="92" text-anchor="middle" class="d">Ubuntu 24.04 · pinned image</text>
+
+<!-- Divider inside container -->
+<line x1="52" y1="104" x2="308" y2="104" stroke="#ddd" stroke-width="1"/>
+<text x="58" y="120" class="d" style="font-size:9px;text-transform:uppercase;letter-spacing:0.7px">baked at build</text>
+
+<!-- Tool list -->
+<text x="62" y="146" class="tool">· Claude Code · Codex CLI</text>
+<text x="62" y="170" class="tool">· Node · Go · Python · uv</text>
+<text x="62" y="194" class="tool">· Playwright + Chromium</text>
+<text x="62" y="218" class="tool">· git · gh CLI · ffmpeg</text>
+<text x="62" y="242" class="tool">· Podman  <tspan fill="#aaa">(nested containers)</tspan></text>
+<text x="62" y="266" class="tool">· /workspace · /clones · /home</text>
+
+<!-- Mount point labels (right side, dim) -->
+<text x="338" y="38" class="d" style="font-size:9px;text-transform:uppercase;letter-spacing:0.7px">mounted at session start</text>
+
+<!-- Mount arrows: right side → container right wall at x=327 -->
+
+<!-- git worktree -->
+<path d="M462 150 L329 150" stroke="#666" stroke-width="1.4" fill="none" marker-end="url(#a)" class="fl"/>
+<text x="470" y="145" class="mount">git worktree</text>
+<text x="470" y="158" class="d">/workspace</text>
+
+<!-- model proxy -->
+<path d="M462 198 L329 198" stroke="#666" stroke-width="1.4" fill="none" marker-end="url(#a)" class="fl"/>
+<text x="470" y="193" class="mount">model proxy</text>
+<text x="470" y="206" class="d">/run/oc-modelproxy/api.sock</text>
+
+<!-- token socket -->
+<path d="M462 246 L329 246" stroke="#666" stroke-width="1.4" fill="none" marker-end="url(#a)" class="fl"/>
+<text x="470" y="241" class="mount">token socket</text>
+<text x="470" y="254" class="d">GitHub auth (per session)</text>
+
+<!-- Side bracket showing host owns the mounts -->
+<line x1="456" y1="135" x2="456" y2="262" stroke="#bbb" stroke-width="1.2"/>
+<line x1="456" y1="135" x2="463" y2="135" stroke="#bbb" stroke-width="1.2"/>
+<line x1="456" y1="262" x2="463" y2="262" stroke="#bbb" stroke-width="1.2"/>
+<text x="451" y="203" text-anchor="end" class="d" style="writing-mode:inherit" transform="rotate(-90,451,203)">host</text>
+
+</svg>
